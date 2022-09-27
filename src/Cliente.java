@@ -2,11 +2,11 @@ import java.time.LocalDate;
 
 public class Cliente {
     private String nome;
-    private int cpf;
+    private String cpf;
     private LocalDate dataNasc;
     private String endereco;
 
-    public Cliente(String nome, int cpf, LocalDate dataNasc, String endereco) {
+    public Cliente(String nome, String cpf, LocalDate dataNasc, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
@@ -17,7 +17,7 @@ public class Cliente {
         return nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
