@@ -23,9 +23,19 @@ public class Conta {
         saldo = 120.50;
         return saldo;
     }
-
-    void checarSaldo(){
-    }    
+        //o saldo de sua conta, depositar, sacar e transferir
+    void mostrarSaldo(double saldo){
+        System.out.println(saldo);
+    }
+    void saque(double valor){
+        double saldoNovo = this.saldo - valor;
+        this.saldo = saldoNovo;
+    }
+    void deposito(double quantia){
+        double saldoNovo = this.saldo + quantia;
+        this.saldo = saldoNovo;
+    }
+       
     
     
 }
