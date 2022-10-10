@@ -2,13 +2,13 @@ public class Conta {
     private int numAgencia;
     private int numConta;
     private double saldo;
-    private Cliente cliente;
+    
 
     public Conta(int numAgencia, int numConta, float saldo,Cliente cliente){
         this.numAgencia = numAgencia;
         this.numConta = numConta;
         this.saldo = saldo;
-        this.cliente = cliente;
+      
     }
 
 
@@ -23,9 +23,6 @@ public class Conta {
     public double getSaldo() {
         saldo = 120.50;
         return saldo;
-    }
-    public Cliente geCliente(){
-        return cliente;
     }
         //o saldo de sua conta, depositar, sacar e transferir
     void mostrarSaldo(double saldo){
