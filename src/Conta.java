@@ -28,9 +28,10 @@ public class Conta {
     void mostrarSaldo(double saldo){
         System.out.println(saldo);
     }
-    void saque(double valor){
+    double saque(double valor){
         double saldoNovo = this.saldo - valor;
         this.saldo = saldoNovo;
+        return saque(saldoNovo);
     }
     void deposito(double quantia){
         double saldoNovo = this.saldo + quantia;
