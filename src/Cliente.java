@@ -3,15 +3,15 @@ public class Cliente {
     private String cpf;
     private String dataNasc;
     private Endereco endereco;
-    private Conta conta;
+    
 
-    public Cliente(String nome, String cpf, String dataNasc, Endereco endereco,Conta conta) {
+    public Cliente(String nome, String cpf, String dataNasc, Endereco endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
         this.endereco = endereco;
-        this.conta = conta;
-    }
+    }  
+        
 
     public String getNome() {
         return nome;
@@ -29,7 +29,5 @@ public class Cliente {
         return endereco;
     }
 
-    public Conta getConta() {
-        return conta;
     }
-}
+

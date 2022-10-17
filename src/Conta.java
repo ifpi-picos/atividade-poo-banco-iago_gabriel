@@ -2,13 +2,19 @@ public class Conta {
     private int numAgencia;
     private int numConta;
     private double saldo;
-    
+    private Cliente cliente;
 
     public Conta(int numAgencia, int numConta, float saldo,Cliente cliente){
         this.numAgencia = numAgencia;
         this.numConta = numConta;
         this.saldo = saldo;
+        this.cliente = cliente;
       
+    }
+
+
+    public Cliente getCliente() {
+        return cliente;
     }
 
 
@@ -33,9 +39,10 @@ public class Conta {
         this.saldo = saldoNovo;
         return saque(saldoNovo);
     }
-    void deposito(double quantia){
+    double deposito(double quantia){
         double saldoNovo = this.saldo + quantia;
         this.saldo = saldoNovo;
+        return deposito(saldoNovo);
     }
        
     
