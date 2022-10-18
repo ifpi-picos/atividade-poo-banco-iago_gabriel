@@ -4,7 +4,7 @@ public class Conta {
     private double saldo;
     private Cliente cliente;
 
-    public Conta(int numAgencia, int numConta, float saldo,Cliente cliente){
+    public Conta(int numAgencia, int numConta, double saldo,Cliente cliente){
         this.numAgencia = numAgencia;
         this.numConta = numConta;
         this.saldo = saldo;
