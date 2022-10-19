@@ -11,26 +11,41 @@ public class Conta {
         this.cliente = cliente;
       
     }
+    
+    public int getNumAgencia() {
+        return numAgencia;
+    }
 
+    public void setNumAgencia(int numAgencia) {
+        this.numAgencia = numAgencia;
+    }
+
+     public int getNumConta() {
+        return numConta;
+    }
+
+    public void setNumConta(int numConta) {
+        this.numConta = numConta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 
     public Cliente getCliente() {
         return cliente;
     }
 
-
-    public int getNumAgencia() {
-        return numAgencia;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
-
-    public int getNumConta() {
-        return numConta;
-    }
-
-    public double getSaldo() {
-        saldo = 120.50;
-        return saldo;
-    }
-        //o saldo de sua conta, depositar, sacar e transferir
+    
+    
+    //o saldo de sua conta, depositar, sacar e transferir
     void mostrarSaldo(double saldo){
         System.out.println(saldo);
     }
@@ -44,7 +59,13 @@ public class Conta {
         this.saldo = saldoNovo;
         return deposito(saldoNovo);
     }
-       
+    double transferencia(Conta recebe, double valor){
+        this.saldo -= valor;
+        recebe.saldo += valor;
+        System.out.println("Foram tranferidos " + valor + " reais da conta principal do cliente " + cliente.getNome() + " para a conta secundaria do cliente " + recebe.getCliente().getNome());
+        return valor;
+        
+    }
     
     
 }
