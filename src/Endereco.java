@@ -1,17 +1,20 @@
 public class Endereco {
     private String logradouro;
     private int numero;
+    private String limpar;
     private String bairro;
     private String cidade;
     private String uf;
 
 
-    public Endereco(String logradouro, int numero, String bairro, String cidade, String uf) {
+    public Endereco(String logradouro, int numero,String limpar, String bairro, String cidade, String uf) {
         this.logradouro = logradouro;
         this.numero = numero;
+        this.limpar = limpar;
         this.bairro = bairro;
         this.cidade = cidade;
         this.uf = uf;
+        
     }
 
 
@@ -33,6 +36,16 @@ public class Endereco {
     public void setNumero(int numero) {
         this.numero = numero;
     }
+    
+    public String getLimpar() {
+        return limpar;
+    }
+
+
+    public void setLimpar(String limpar) {
+        this.limpar = limpar;
+    }
+
 
 
     public String getBairro() {
@@ -64,4 +77,13 @@ public class Endereco {
         this.uf = uf;
     }
    
+    void exibirEndereco(){
+    System.out.println("Rua: "+this.getLogradouro());
+    System.out.println("Numero: "+this.getNumero());
+    System.out.println("Bairro: "+this.getBairro());
+    System.out.println("Cidade: "+this.getCidade());
+    System.out.println("Uf: "+this.getUf());
+    }
+
+
 }

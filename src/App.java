@@ -5,7 +5,7 @@ public class App {
   public static void main(String[] args) {  
       //criação de 2 endereços, clientes e contas para testar um pouco os metodos      
       Scanner ler = new Scanner(System.in);
-      Endereco endereco1 = new Endereco(ler.nextLine(),ler.nextInt(),ler.nextLine(), ler.nextLine(), ler.nextLine() );
+      Endereco endereco1 = new Endereco(ler.nextLine(),ler.nextInt(),ler.nextLine(), ler.nextLine(), ler.nextLine(), ler.nextLine() );
       //Endereco endereco2 = new Endereco("Rua 123", 20, "Bairro T2", "Picos", "PI");
 
       Cliente cliente1 = new Cliente("Gabriel",  "123456789", "26/12/2003", endereco1);
@@ -30,13 +30,7 @@ public class App {
       conta1.deposito(100.00);
       conta1.mostrarSaldo(conta1);
 
-
-
-
-     
-
-
-
+      endereco1.exibirEndereco();
 
     
   }

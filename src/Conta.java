@@ -48,23 +48,27 @@ public class Conta {
     //o saldo de sua conta, depositar, sacar e transferir
     void mostrarSaldo(Conta contasal){
         System.out.println("O seu saldo atual é de R$" + contasal.getSaldo());
+        System.out.println();
     }
     double saque(double valor){
         double saldoNovo = this.saldo - valor;
         saldo = saldoNovo;
         System.out.println("Saque de R$" + valor + " feito com sucesso.");
+        System.out.println();
         return saldo;
     }
     double deposito(double quantia){
         double saldoNovo = this.saldo + quantia;
         saldo = saldoNovo;
         System.out.println("Deposito de R$" + quantia + " efetuado com sucesso!");
+        System.out.println();
         return saldo;
     }
     double transferencia(Conta recebe, double valor){
         this.saldo -= valor;
         recebe.saldo += valor;
         System.out.println("Foram tranferidos " + valor + " reais da conta principal do cliente " + cliente.getNome() + " para a conta secundaria do cliente " + recebe.getCliente().getNome());
+        System.out.println();
         return valor;
         
     }
