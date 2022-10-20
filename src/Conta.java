@@ -46,8 +46,8 @@ public class Conta {
     
     
     //o saldo de sua conta, depositar, sacar e transferir
-    void mostrarSaldo(Conta contasal){
-        System.out.println("O seu saldo atual é de R$" + contasal.getSaldo());
+    void mostrarSaldo(){
+        System.out.println("O seu saldo atual é de R$" + this.getSaldo());
         System.out.println();
     }
     double saque(double valor){

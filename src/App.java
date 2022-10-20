@@ -16,7 +16,7 @@ public class App {
 
       //System.out.println("O saldo da conta do cliente " + newCliente.getNome() + " é: " + conta1.getSaldo());
       
-      conta1.mostrarSaldo(conta1);
+      conta1.mostrarSaldo();
       System.out.println("------------------------------------------------------------");
       conta1.transferencia(conta2,350.25);
       System.out.println("Novo saldo da conta principal de " + cliente1.getNome() + ": R$" + conta1.getSaldo());
@@ -28,7 +28,7 @@ public class App {
       System.out.println("------------------------------------------------------------");
 
       conta1.deposito(100.00);
-      conta1.mostrarSaldo(conta1);
+      conta1.mostrarSaldo();
 
       endereco1.exibirEndereco();
 
