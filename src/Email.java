@@ -1,8 +1,8 @@
-public class Sms implements Notificacao {
+public class Email implements Notificacao {
 
     @Override
     public void envia(String msg) {
         
     }
-   
+    
 }

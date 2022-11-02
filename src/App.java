@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class App {
@@ -5,15 +6,21 @@ public class App {
   public static void main(String[] args) {  
       //criação de 2 endereços, clientes e contas para testar um pouco os metodos      
       Scanner ler = new Scanner(System.in);
+      Random numAg = new Random();
+      Random numCon = new Random();
+      System.out.println("Digite seu endereço na seguinte ordem: Rua, Numero, Bairro, Cidade, Uf");
+
       Endereco endereco1 = new Endereco(ler.nextLine(),ler.nextInt(),ler.nextLine(), ler.nextLine(), ler.nextLine(), ler.nextLine() );
       //Endereco endereco2 = new Endereco("Rua 123", 20, "Bairro T2", "Picos", "PI");
 
       Cliente cliente1 = new Cliente("Gabriel",  "123456789", "26/12/2003", endereco1);
       //Cliente cliente2 = new Cliente("Iago", "222333444", "00/00/0000", endereco2);
 
-      Conta conta1 = new Conta(1234, 2222000, 500.00, cliente1);
-      Conta conta2 = new Conta(1001, 123, 000, cliente1);
+      Conta conta1 = new Conta(numAg.nextInt(10,100),numCon.nextInt(10000,100000) ,000, cliente1);
+      Conta conta2 = new Conta(numAg.nextInt(10,100), numCon.nextInt(10000,100000), 000, cliente1);
 
+      System.out.println(conta1.getNumAgencia());
+      System.out.println(conta1.getNumConta());
       //System.out.println("O saldo da conta do cliente " + newCliente.getNome() + " é: " + conta1.getSaldo());
       
       conta1.mostrarSaldo();
@@ -30,7 +37,14 @@ public class App {
       conta1.deposito(100.00);
       conta1.mostrarSaldo();
 
-      endereco1.exibirEndereco();
+      //endereco1.exibirEndereco();
+
+
+
+     
+
+
+
 
     
   }
