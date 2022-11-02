@@ -1,7 +1,7 @@
 public class Email implements Notificacao {
 
     @Override
-    public void envia(String msg) {
+    public void enviaNotificacao(String operação, Double valor) {
         
     }
     

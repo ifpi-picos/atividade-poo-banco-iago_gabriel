@@ -1,3 +1,3 @@
 public interface Notificacao{
-    public void envia(String msg);
+    public void enviaNotificacao(String operação, Double valor);
 }

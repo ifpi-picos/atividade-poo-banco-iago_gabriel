@@ -24,11 +24,9 @@ public class Cliente {
     }
 
 
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 
 
     public String getCpf() {
@@ -36,17 +34,13 @@ public class Cliente {
     }
 
 
-
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-
-
     public String getDataNasc() {
         return dataNasc;
     }
-
 
 
     public void setDataNasc(String dataNasc) {
@@ -54,11 +48,9 @@ public class Cliente {
     }
 
 
-
     public Endereco getEndereco() {
         return endereco;
     }
-
 
 
     public void setEndereco(Endereco endereco) {

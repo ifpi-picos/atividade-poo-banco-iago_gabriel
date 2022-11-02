@@ -1,15 +1,16 @@
 public class Conta {
     private int numAgencia;
     private int numConta;
-    private double saldo;
+    private double saldo = 0;
     private Cliente cliente;
+    private Notificacao notificacao;
 
-    public Conta(int numAgencia, int numConta, double saldo,Cliente cliente){
+    public Conta(int numAgencia, int numConta, double saldo,Cliente cliente,Notificacao notificacao){
         this.numAgencia = numAgencia;
         this.numConta = numConta;
         this.saldo = saldo;
         this.cliente = cliente;
-      
+        this.notificacao = notificacao;
     }
     
     public int getNumAgencia() {
@@ -44,6 +45,11 @@ public class Conta {
         this.cliente = cliente;
     }
     
+    public Notificacao getNotificacao() {
+        return notificacao;
+    }
+
+
     
     //o saldo de sua conta, depositar, sacar e transferir
     void mostrarSaldo(){
@@ -80,6 +86,7 @@ public class Conta {
         return valor;
         
     }
+
     
     
 }
