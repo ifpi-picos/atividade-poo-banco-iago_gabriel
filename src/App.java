@@ -12,6 +12,7 @@ public class App {
       String nome,dataNasci;
       String rua,bairro,cidade,uf;
       int numeroMoradia;
+      int indice;
       int opt1,opt2;
       int val1, val2;
       String cpfLog;
@@ -20,7 +21,7 @@ public class App {
       ArrayList<String>cpfs = new ArrayList<>();
 
 
-
+    while(true){
       System.out.println("      Banco Mount      ");
       
       System.out.println();
@@ -65,8 +66,7 @@ public class App {
   
         Endereco endereco = new Endereco(rua, numeroMoradia, bairro, cidade, uf);
         Cliente cliente = new Cliente(nome, cpf , dataNasci, endereco);
-        ContaCorrente contaC = new ContaCorrente(numAg.nextInt(10,100),numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);
-        
+        ContaCorrente contaC = new ContaCorrente(numAg.nextInt(10), numCon.nextInt(100000), 000, cliente,null, 1000.0);        
         contasCorr.add(contaC);
         cpfs.add(cpf);
         System.out.println("Conta corrente criada com sucesso, obrigado por abrir uma conta no Banco Mount!");
@@ -91,7 +91,7 @@ public class App {
             contaC.mostrarSaldo();
           }
           else if(opt2==5){
-            break;
+            continue;
           }
         
 
@@ -132,7 +132,7 @@ public class App {
 
         Endereco endereco = new Endereco(rua, numeroMoradia, bairro, cidade, uf);
         Cliente cliente = new Cliente(nome, cpf, dataNasci, endereco);
-        ContaPoupanca contaP = new ContaPoupanca(numAg.nextInt(10,100),numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);
+        ContaPoupanca contaP = new ContaPoupanca(numAg.nextInt(100),numCon.nextInt(100000), 000, cliente,null, 1000.0);
 
         contasPoup.add(contaP);
         cpfs.add(cpf);
@@ -172,12 +172,9 @@ public class App {
           System.out.println();
           System.out.print("Para acessar sua conta, digite o cpf cadastrado na mesma: ");
           cpfLog = l1.nextLine();
-        }
-          if(cpfLog.equals()){
-            System.out.println();
-        }
-        break;
-        }
+        }indice =cpfs.indexOf(cpfLog);
+        
+      }
       
       //ContaPoupanca conta2 = new ContaPoupanca(numAg.nextInt(10,100), numCon.nextInt(10000,100000), 000, cliente1,null,1000.0 );
         
@@ -205,8 +202,14 @@ public class App {
         
     
       System.out.println(contasCorr);
-      l1.close();
-      }
+      System.out.println(cpfs.get(0));
 
-  }
-  }
+
+      
+    }l1.close();
+  }}
+}
+}
+
+    
+  
