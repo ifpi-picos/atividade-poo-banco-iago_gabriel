@@ -14,8 +14,11 @@ public class App {
       int numeroMoradia;
       int opt1,opt2;
       int val1, val2;
+      String cpfLog;
       ArrayList<ContaCorrente>contasCorr = new ArrayList<>();
       ArrayList<ContaPoupanca>contasPoup = new ArrayList<>();
+      ArrayList<String>cpfs = new ArrayList<>();
+
 
 
       System.out.println("      Banco Mount      ");
@@ -25,7 +28,8 @@ public class App {
       System.out.println("Crie sua conta gratuitmente!");
 
       while(true){
-        System.out.println("Deseja criar: \nSelecione * 1 * para Conta Corrente  ||  Selecione * 2 * para Conta Poupança ");
+        System.out.println("Deseja criar: \nDigite * 1 * para Conta Corrente  ||  Digite * 2 * para Conta Poupança ");
+        System.out.println("Caso já tenha uma conta no nosso banco digite 3 para fazer login!");
         opt1 = l1.nextInt();
         l1.nextLine();
         if(opt1 == 1)
@@ -36,7 +40,7 @@ public class App {
 
         System.out.print("Digite seu CPF (XXX.XXX.XXX-XX): ");
          cpf = l1.nextLine();
-        
+         
         System.out.print("Digite sua data de nascimento (DD/MM/AAAA): ");
         dataNasci = l1.nextLine();
         
@@ -64,6 +68,7 @@ public class App {
         ContaCorrente contaC = new ContaCorrente(numAg.nextInt(10,100),numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);
         
         contasCorr.add(contaC);
+        cpfs.add(cpf);
         System.out.println("Conta corrente criada com sucesso, obrigado por abrir uma conta no Banco Mount!");
         
         System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Tranferência \n4 - Checar saldo \n5 - Sair do sistema");
@@ -130,6 +135,7 @@ public class App {
         ContaPoupanca contaP = new ContaPoupanca(numAg.nextInt(10,100),numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);
 
         contasPoup.add(contaP);
+        cpfs.add(cpf);
 
         System.out.println("Conta poupança criada com sucesso, obrigado por abrir uma conta no Banco Mount!");
 
@@ -157,7 +163,19 @@ public class App {
           else if(opt2==5){
             break;
           }
-      }
+          l1.nextLine();
+      }if(opt1 == 3){
+        System.out.print("Para acessar sua conta, digite o cpf cadastrado na mesma: ");
+        cpfLog = l1.nextLine();
+        while(cpfs.contains(cpfLog) == false){
+          System.out.println("ERRO, cpf não reconhecido, tente novamente!");
+          System.out.println();
+          System.out.print("Para acessar sua conta, digite o cpf cadastrado na mesma: ");
+          cpfLog = l1.nextLine();
+        }
+          if(cpfLog.equals()){
+            System.out.println();
+        }
         break;
         }
       
