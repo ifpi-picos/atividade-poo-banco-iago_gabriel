@@ -66,7 +66,7 @@ public class App {
   
         Endereco endereco = new Endereco(rua, numeroMoradia, bairro, cidade, uf);
         Cliente cliente = new Cliente(nome, cpf , dataNasci, endereco);
-        ContaCorrente contaC = new ContaCorrente(numAg.nextInt(10), numCon.nextInt(100000), 000, cliente,null, 1000.0);        
+        ContaCorrente contaC = new ContaCorrente(numAg.nextInt(10,100), numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);        
         contasCorr.add(contaC);
         cpfs.add(cpf);
         System.out.println("Conta corrente criada com sucesso, obrigado por abrir uma conta no Banco Mount!");
@@ -132,7 +132,7 @@ public class App {
 
         Endereco endereco = new Endereco(rua, numeroMoradia, bairro, cidade, uf);
         Cliente cliente = new Cliente(nome, cpf, dataNasci, endereco);
-        ContaPoupanca contaP = new ContaPoupanca(numAg.nextInt(100),numCon.nextInt(100000), 000, cliente,null, 1000.0);
+        ContaPoupanca contaP = new ContaPoupanca(numAg.nextInt(10,100),numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);
 
         contasPoup.add(contaP);
         cpfs.add(cpf);
