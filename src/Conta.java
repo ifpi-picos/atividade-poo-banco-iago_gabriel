@@ -72,6 +72,7 @@ public class Conta {
         saldo = saldoNovo;
         System.out.println("Deposito de R$" + quantia + " efetuado com sucesso!");
         System.out.println();
+        System.out.println("O novo saldo da sua conta é: R$" + saldo);
         return saldo;
     }
     double transferencia(Conta recebe, double valor){
