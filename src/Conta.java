@@ -64,6 +64,7 @@ public class Conta {
         System.out.println();
         }else {
             System.out.println("Quantia insdiponivel para saque, tente novamente com um valor menor!");
+            System.out.println();
         }
         return saldo;
     }
@@ -73,16 +74,18 @@ public class Conta {
         System.out.println("Deposito de R$" + quantia + " efetuado com sucesso!");
         System.out.println();
         System.out.println("O novo saldo da sua conta é: R$" + saldo);
+        System.out.println();
         return saldo;
     }
     double transferencia(Conta recebe, double valor){
         if(valor < saldo || valor == saldo){
         this.saldo -= valor;
         recebe.saldo += valor;
-        System.out.println("Foram tranferidos " + valor + " reais da conta principal do cliente " + cliente.getNome() + " para a conta secundaria do cliente " + recebe.getCliente().getNome());
+        System.out.println("Foram tranferidos R$" + valor + " reais para a conta de " + recebe.getCliente().getNome());
         System.out.println();
         }else{
             System.out.println("Quantia não disponivel para tranferência, tente novamente com um valor menor!");
+            System.out.println();
         }
         return valor;
         
