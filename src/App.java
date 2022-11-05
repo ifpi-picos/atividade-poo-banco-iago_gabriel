@@ -12,13 +12,17 @@ public class App {
       String nome,dataNasci;
       String rua,bairro,cidade,uf;
       int numeroMoradia;
-      int indice;
+      int indice,indiceCon;
       int opt1,opt2,opt3;
-      int val1, val2;
+      int val1;
+      Double val2;
       String cpfLog;
+      int numContaTranfere;
       ArrayList<ContaCorrente>contasCorr = new ArrayList<>();
       ArrayList<ContaPoupanca>contasPoup = new ArrayList<>();
       ArrayList<String>cpfs = new ArrayList<>();
+      ArrayList<Integer>numerosContasCorr = new ArrayList<>();
+      ArrayList<Integer>numerosContasPoup = new ArrayList<>();
 
 
     while(true){
@@ -68,8 +72,11 @@ public class App {
         Endereco endereco = new Endereco(rua, numeroMoradia, bairro, cidade, uf);
         Cliente cliente = new Cliente(nome, cpf , dataNasci, endereco);
         ContaCorrente contaC = new ContaCorrente(numAg.nextInt(10,100), numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);        
+        
         contasCorr.add(contaC);
+        numerosContasCorr.add(contaC.getNumConta());
         cpfs.add(cpf);
+
         System.out.println();
         System.out.println("Conta corrente criada com sucesso, obrigado por abrir uma conta no Banco Mount!");
         System.out.println();
@@ -86,8 +93,10 @@ public class App {
         System.out.println("Cidade: "+ contaC.getCliente().getEndereco().getCidade());
         System.out.println("Estado: "+ contaC.getCliente().getEndereco().getUf());
         System.out.println();
-        System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Tranferência \n4 - Checar saldo \n5 - Sair do sistema");
-        opt2 = l1.nextInt();
+        if(contasCorr.size()>1)
+          {
+          System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Tranferência \n4 - Checar saldo \n5 - Sair do sistema");
+          opt2 = l1.nextInt();
           if(opt2 == 1){//SAQUE
             System.out.print("Digite a quantia que deseja sacar: R$");
             val1 = l1.nextInt();
@@ -100,7 +109,19 @@ public class App {
           }
           else if(opt2 == 3){//TRANSFERENCIA
             System.out.print("Digite o numero da conta para qual deseja transferir: ");
-            val2 = l1.nextInt();
+            numContaTranfere = l1.nextInt();
+            
+            while((numerosContasCorr.contains(numContaTranfere) == false)){
+                System.out.println("ERRO, numero da conta não localizado, tente novamente!");
+                System.out.println();
+                System.out.print("Para realizar o deposito, digite o numero da conta para qual deseja tranferir: ");
+                numContaTranfere = l1.nextInt();
+              }
+              System.out.print("Digite a quantia que deseja tranferir: R$");
+              val2 = l1.nextDouble();
+              indiceCon = numerosContasCorr.indexOf(numContaTranfere);
+              contaC.transferencia(contasCorr.get(indiceCon),val2);
+
           }
           else if(opt2 == 4){//EXIBIR O SALDO DA CONTA
             contaC.mostrarSaldo();
@@ -108,6 +129,26 @@ public class App {
           else if(opt2==5){
             break;
           }
+        }else {
+          System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Checar saldo \n4 - Sair do sistema");
+          opt2 = l1.nextInt();
+          if(opt2 == 1){//SAQUE
+            System.out.print("Digite a quantia que deseja sacar: R$");
+            val1 = l1.nextInt();
+            contaC.saque(val1);
+          }
+          else if(opt2 == 2){//DEPOSITO
+            System.out.print("Digite a quantia que depositar: R$");
+            val1 = l1.nextInt();
+            contaC.deposito(val1);
+          }
+          else if(opt2 == 3){//EXIBIR O SALDO DA CONTA
+            contaC.mostrarSaldo();
+          }
+          else if(opt2==4){
+            break;
+          }
+        }
         
 
         } while(true) {
@@ -148,9 +189,11 @@ public class App {
         Endereco endereco = new Endereco(rua, numeroMoradia, bairro, cidade, uf);
         Cliente cliente = new Cliente(nome, cpf, dataNasci, endereco);
         ContaPoupanca contaP = new ContaPoupanca(numAg.nextInt(10,100),numCon.nextInt(10000,100000), 000, cliente,null, 1000.0);
-
+        
+        numerosContasPoup.add(contaP.getNumConta());
         contasPoup.add(contaP);
         cpfs.add(cpf);
+
         System.out.println();
         System.out.println("Conta poupança criada com sucesso, obrigado por abrir uma conta no Banco Mount!");
         System.out.println();
@@ -168,10 +211,10 @@ public class App {
         System.out.println("Estado: "+ contaP.getCliente().getEndereco().getUf());
 
 
-        System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Tranferência \n4 - Checar saldo \n5 - Sair do sistema");
-
-        opt2 = l1.nextInt();
-
+        if(contasPoup.size()>1)
+          {
+          System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Tranferência \n4 - Checar saldo \n5 - Sair do sistema");
+          opt2 = l1.nextInt();
           if(opt2 == 1){//SAQUE
             System.out.print("Digite a quantia que deseja sacar: R$");
             val1 = l1.nextInt();
@@ -184,18 +227,46 @@ public class App {
           }
           else if(opt2 == 3){//TRANSFERENCIA
             System.out.print("Digite o numero da conta para qual deseja transferir: ");
-            val2 = l1.nextInt();
+            numContaTranfere = l1.nextInt();
+            
+            while((numerosContasPoup.contains(numContaTranfere) == false)){
+                System.out.println("ERRO, numero da conta não localizado, tente novamente!");
+                System.out.println();
+                System.out.print("Para realizar o deposito, digite o numero da conta para qual deseja tranferir: ");
+                numContaTranfere = l1.nextInt();
+              }
+              System.out.print("Digite a quantia que deseja tranferir: R$");
+              val2 = l1.nextDouble();
+              indiceCon = numerosContasPoup.indexOf(numContaTranfere);
+              contaP.transferencia(contasPoup.get(indiceCon),val2);
+
           }
           else if(opt2 == 4){//EXIBIR O SALDO DA CONTA
             contaP.mostrarSaldo();
           }
           else if(opt2==5){
-            System.out.println();
-            System.out.println("       Banco Mount      ");
-            System.out.println();
-            System.out.println("Crie sua conta gratuitamente!!");
             break;
           }
+        }else {
+          System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Checar saldo \n4 - Sair do sistema");
+          opt2 = l1.nextInt();
+          if(opt2 == 1){//SAQUE
+            System.out.print("Digite a quantia que deseja sacar: R$");
+            val1 = l1.nextInt();
+            contaP.saque(val1);
+          }
+          else if(opt2 == 2){//DEPOSITO
+            System.out.print("Digite a quantia que depositar: R$");
+            val1 = l1.nextInt();
+            contaP.deposito(val1);
+          }
+          else if(opt2 == 3){//EXIBIR O SALDO DA CONTA
+            contaP.mostrarSaldo();
+          }
+          else if(opt2==4){
+            break;
+          }
+        }
           l1.nextLine();
       }if(opt1 == 3){
         System.out.println("A conta que deseja acessar é: \n    1 - Corrente    |    2 - Poupança");
@@ -212,34 +283,68 @@ public class App {
               cpfLog = l1.nextLine();
              }
           indice =cpfs.indexOf(cpfLog);
-          ContaCorrente contaC = new ContaCorrente(1, 1, 10.0, null, null, null);
-          contaC = contasCorr.get(indice);
+          ContaCorrente contaCo = new ContaCorrente(1, 1, 10.0, null, null, null);
+          contaCo = contasCorr.get(indice);
   
-          System.out.println("Bem vindo de volta!"+ contaC.getCliente().getNome());
+          System.out.println("Bem vindo de volta!"+ contaCo.getCliente().getNome());
           System.out.println();
+          if(contasCorr.size()>1)
+          {
           System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Tranferência \n4 - Checar saldo \n5 - Sair do sistema");
           opt2 = l1.nextInt();
           if(opt2 == 1){//SAQUE
             System.out.print("Digite a quantia que deseja sacar: R$");
             val1 = l1.nextInt();
-            contaC.saque(val1);
+            contaCo.saque(val1);
           }
           else if(opt2 == 2){//DEPOSITO
             System.out.print("Digite a quantia que depositar: R$");
             val1 = l1.nextInt();
-            contaC.deposito(val1);
+            contaCo.deposito(val1);
           }
           else if(opt2 == 3){//TRANSFERENCIA
             System.out.print("Digite o numero da conta para qual deseja transferir: ");
-            val2 = l1.nextInt();
+            numContaTranfere = l1.nextInt();
             
+            while((numerosContasCorr.contains(numContaTranfere) == false)){
+                System.out.println("ERRO, numero da conta não localizado, tente novamente!");
+                System.out.println();
+                System.out.print("Para realizar o deposito, digite o numero da conta para qual deseja tranferir: ");
+                numContaTranfere = l1.nextInt();
+              }
+              System.out.print("Digite a quantia que deseja tranferir: R$");
+              val2 = l1.nextDouble();
+              indiceCon = numerosContasCorr.indexOf(numContaTranfere);
+              contaCo.transferencia(contasCorr.get(indiceCon),val2);
+
           }
           else if(opt2 == 4){//EXIBIR O SALDO DA CONTA
-            contaC.mostrarSaldo();
+            contaCo.mostrarSaldo();
           }
           else if(opt2==5){
             break;
           }
+        }else {
+          System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Checar saldo \n4 - Sair do sistema");
+          opt2 = l1.nextInt();
+          if(opt2 == 1){//SAQUE
+            System.out.print("Digite a quantia que deseja sacar: R$");
+            val1 = l1.nextInt();
+            contaCo.saque(val1);
+          }
+          else if(opt2 == 2){//DEPOSITO
+            System.out.print("Digite a quantia que depositar: R$");
+            val1 = l1.nextInt();
+            contaCo.deposito(val1);
+          }
+          else if(opt2 == 3){//EXIBIR O SALDO DA CONTA
+            contaCo.mostrarSaldo();
+          }
+          else if(opt2==4){
+            break;
+          }
+        }
+          
   
         }else if(opt3 == 2){
           System.out.print("Para acessar sua conta, digite o cpf cadastrado na mesma: ");
@@ -251,42 +356,75 @@ public class App {
             cpfLog = l1.nextLine();
             
           }indice =cpfs.indexOf(cpfLog);
-          ContaPoupanca contaP = new ContaPoupanca(1, 1, 10.0, null, null, null);
-          contaP = contasPoup.get(indice);
-          System.out.println("Bem vindo de volta!"+ contaP.getCliente().getNome());
+          ContaPoupanca contaPo = new ContaPoupanca(1, 1, 10.0, null, null, null);
+          contaPo = contasPoup.get(indice);
+          System.out.println("Bem vindo de volta!"+ contaPo.getCliente().getNome());
           System.out.println();
+          if(contasPoup.size()>1)
+          {
           System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Tranferência \n4 - Checar saldo \n5 - Sair do sistema");
           opt2 = l1.nextInt();
           if(opt2 == 1){//SAQUE
             System.out.print("Digite a quantia que deseja sacar: R$");
             val1 = l1.nextInt();
-            contaP.saque(val1);
+            contaPo.saque(val1);
           }
           else if(opt2 == 2){//DEPOSITO
             System.out.print("Digite a quantia que depositar: R$");
             val1 = l1.nextInt();
-            contaP.deposito(val1);
+            contaPo.deposito(val1);
           }
           else if(opt2 == 3){//TRANSFERENCIA
             System.out.print("Digite o numero da conta para qual deseja transferir: ");
-            val2 = l1.nextInt();
+            numContaTranfere = l1.nextInt();
+            
+            while((numerosContasPoup.contains(numContaTranfere) == false)){
+                System.out.println("ERRO, numero da conta não localizado, tente novamente!");
+                System.out.println();
+                System.out.print("Para realizar o deposito, digite o numero da conta para qual deseja tranferir: ");
+                numContaTranfere = l1.nextInt();
+              }
+              System.out.print("Digite a quantia que deseja tranferir: R$");
+              val2 = l1.nextDouble();
+              indiceCon = numerosContasPoup.indexOf(numContaTranfere);
+              contaPo.transferencia(contasPoup.get(indiceCon),val2);
+
           }
           else if(opt2 == 4){//EXIBIR O SALDO DA CONTA
-            contaP.mostrarSaldo();
+            contaPo.mostrarSaldo();
           }
           else if(opt2==5){
             break;
           }
+        }else {
+          System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Checar saldo \n4 - Sair do sistema");
+          opt2 = l1.nextInt();
+          if(opt2 == 1){//SAQUE
+            System.out.print("Digite a quantia que deseja sacar: R$");
+            val1 = l1.nextInt();
+            contaPo.saque(val1);
+          }
+          else if(opt2 == 2){//DEPOSITO
+            System.out.print("Digite a quantia que depositar: R$");
+            val1 = l1.nextInt();
+            contaPo.deposito(val1);
+          }
+          else if(opt2 == 3){//EXIBIR O SALDO DA CONTA
+            contaPo.mostrarSaldo();
+          }
+          else if(opt2==4){
+            break;
+          }
+        }
         }
 
       }
       
-      System.out.println(contasCorr);
-      System.out.println(cpfs.get(0));
+      
       break;
     }l1.close();
     break;
-  }}
+  }l1.close();}
 }
 }
 
