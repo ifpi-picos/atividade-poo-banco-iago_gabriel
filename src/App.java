@@ -406,14 +406,7 @@ public class App {
           else if(opt2==5){
             break;
           }
-        }else {
-          System.out.println("As Operações disponiveis são: \n1 - Saque \n2 - Deposito \n3 - Checar saldo \n4 - Sair do sistema");
-          opt2 = l1.nextInt();
-          if(opt2 == 1){//SAQUE
-            System.out.print("Digite a quantia que deseja sacar: R$");
-            val1 = l1.nextDouble();
-            contaPo.saque(val1);
-          }
+        }else {static
           else if(opt2 == 2){//DEPOSITO
             System.out.print("Digite a quantia que depositar: R$");
             val1 = l1.nextDouble();

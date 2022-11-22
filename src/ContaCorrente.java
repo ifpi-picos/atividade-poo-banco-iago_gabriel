@@ -14,9 +14,14 @@ public class ContaCorrente extends Conta{
         if(valor <= chequeEspecial){
         this.chequeEspecial = chequeEspecial - valor;
         }else{
-            System.out.println("Valor indisponivel para saque no Cheuque especial por favor tente novamente com um valor menor");
+            System.out.println("Valor indisponivel para saque no Cheque especial por favor tente novamente com um valor menor");
         }
         return chequeEspecial;
+    }
+
+    @Override
+    boolean transferencia(Conta recebe, double valor) {
+        return super.transferencia(recebe, valor);
     }
 
     @Override
